@@ -10,7 +10,7 @@ export default function (options = {}) {
       throw new Error(`The 'hashPassword' hook should only be used as a 'before' hook.`);
     }
 
-    options = Object.assign({}, defaults, hook.app.get('auth'), options);
+    options = Object.assign({}, defaults, hook.app.get(options.configKey || 'auth'), options);
 
     const crypto = options.bcrypt || bcrypt;
 

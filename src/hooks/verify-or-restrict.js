@@ -11,7 +11,7 @@ export default function(options = {}){
     if (hook.method !== 'find' && hook.method !== 'get') {
       throw new Error(`'verifyOrRestrict' should only be used in a find or get hook.`);
     }
-    
+
     // If it was an internal call then skip this hook
     if (!hook.params.provider) {
       return hook;
@@ -19,7 +19,7 @@ export default function(options = {}){
 
     const token = hook.params.token;
 
-    const authOptions = hook.app.get('auth') || {};
+    const authOptions = hook.app.get(options.configKey || 'auth') || {};
 
     // Grab the token options here
     options = Object.assign({}, authOptions, authOptions.token, options);

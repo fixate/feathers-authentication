@@ -17,7 +17,7 @@ export default function(options = {}) {
       throw new Error('There is no current user to associate.');
     }
 
-    options = Object.assign({}, defaults, hook.app.get('auth'), options);
+    options = Object.assign({}, defaults, hook.app.get(options.configKey || 'auth'), options);
 
     const id = hook.params.user[options.idField];
 

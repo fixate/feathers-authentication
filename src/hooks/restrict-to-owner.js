@@ -27,7 +27,7 @@ export default function(options = {}){
       throw new errors.NotAuthenticated(`The current user is missing. You must not be authenticated.`);
     }
 
-    options = Object.assign({}, defaults, hook.app.get('auth'), options);
+    options = Object.assign({}, defaults, hook.app.get(options.configKey || 'auth'), options);
 
     const id = hook.params.user[options.idField];
 

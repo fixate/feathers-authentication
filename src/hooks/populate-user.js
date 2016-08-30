@@ -10,7 +10,7 @@ export default function(options = {}){
   return function(hook) {
     let id;
 
-    options = Object.assign({}, defaults, hook.app.get('auth'), options);
+    options = Object.assign({}, defaults, hook.app.get(options.configKey || 'auth'), options);
 
     // If it's an after hook grab the id from the result
     if (hook.type === 'after') {
