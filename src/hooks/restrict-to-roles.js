@@ -29,7 +29,7 @@ export default function(options = {}){
       throw new errors.NotAuthenticated();
     }
 
-    options = Object.assign({}, defaults, hook.app.get('auth'), options);
+    options = Object.assign({}, defaults, hook.app.get(options.configKey || 'auth'), options);
 
     let authorized = false;
     let roles = hook.params.user[options.fieldName];
@@ -78,7 +78,7 @@ export default function(options = {}){
 
           let field = data[options.ownerField];
 
-          // Handle nested Sequelize or Mongoose models 
+          // Handle nested Sequelize or Mongoose models
           if (isPlainObject(field)) {
             field = field[options.idField];
           }

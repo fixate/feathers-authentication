@@ -31,7 +31,7 @@ export default function(options = {}){
       return hook;
     }
 
-    options = Object.assign({}, defaults, hook.app.get('auth'), options);
+    options = Object.assign({}, defaults, hook.app.get(options.configKey || 'auth'), options);
 
     // If we don't have a user we have to always use find instead of get because we must not return id queries that are unrestricted and we don't want the developer to have to add after hooks.
     let query = Object.assign({}, hook.params.query, options.restrict);

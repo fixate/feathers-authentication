@@ -18,7 +18,7 @@ export default function(options = {}){
       throw new errors.NotAuthenticated('Authentication token missing.');
     }
 
-    const authOptions = hook.app.get('auth') || {};
+    const authOptions = hook.app.get(options.configKey || 'auth') || {};
 
     // Grab the token options here
     options = Object.assign({}, authOptions.token, options);
